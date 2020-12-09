@@ -31,6 +31,7 @@ Used this to test the methods and to see the test coverage.
 
 ## Built With
 
+* [Jira](https://projectims1.atlassian.net/) - Sprints and Agile development
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [Java] - used Object Oriented Programming
 * [SQL](https://cloud.google.com/) - Cloud GCP for SQL
