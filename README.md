@@ -1,10 +1,14 @@
 # TODO_WebApplicationProject
-Coverage: %
+Coverage: 17.1%
 
 This is a TODO Web Application project which creates a full-stack web application following the Enterprise Architecture Model, using:
+
 	>an application back-end developed using the languages like SPRING, MAVEN, JUNIT and MOCKITO.
+	
 	>a managed database hosted by locally/cloud
+	
 	>a front-end developed using the language from the Front-end Technologies such as JavaScript, HTML, CSS, Selenium.
+	
 
 ## Getting Started
 
@@ -32,7 +36,7 @@ Used this to test the methods and to see the test coverage.
 * [SQL](https://cloud.google.com/) - Cloud GCP for SQL
 * [HTML] - Front end of the API
 * [CSS] - Front end API styling
-* [JavaScript) - Front end of the API
+* [JavaScript] - Front end API styling
 
 ## Authors
 
