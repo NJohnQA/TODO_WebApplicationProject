@@ -1,7 +1,7 @@
 # TODO_WebApplicationProject
 Coverage: 17.1%
 
-This is a TODO Web Application project which creates a full-stack web application following the Enterprise Architecture Model, using:
+This is a Shopping TODO Web Application project which creates a full-stack web application following the Enterprise Architecture Model, using:
 
 	>an application back-end developed using the languages like SPRING, MAVEN, JUNIT and MOCKITO.
 	
