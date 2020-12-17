@@ -104,14 +104,4 @@ public class ShopControllerUnitTesting {
 
 	}
 
-	// Find by name
-	@Test
-	void findByName() throws Exception {
-		List<ShopDto> dtos = LISTOFSHOPS.stream().map(this::maptoDto).collect(Collectors.toList());
-		when(this.service.findByName(TEST_SHOP_1.getStoreName())).thenReturn(dtos);
-		assertThat(this.controller.findByName(TEST_SHOP_1.getStoreName()))
-				.isEqualTo(new ResponseEntity<List<ShopDto>>(dtos, HttpStatus.OK));
-		verify(this.service, atLeastOnce()).findByName(TEST_SHOP_1.getStoreName());
-	}
-
 }

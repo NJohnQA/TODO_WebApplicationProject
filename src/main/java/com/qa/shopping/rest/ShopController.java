@@ -2,7 +2,9 @@ package com.qa.shopping.rest;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,6 +24,7 @@ import com.qa.shopping.service.ShopService;
 @RestController
 @CrossOrigin
 @RequestMapping("/shop") // this is to further define the path
+@Profile({"dev","prod"})
 public class ShopController {
 
 	private ShopService service;
@@ -67,11 +70,6 @@ public class ShopController {
 				// no_content - if deleted successfully then should return nothing
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		// if the record isnt found!
-	}
-	
-	@GetMapping("findByName/{storename}")
-	public ResponseEntity<List<ShopDto>> findByName(@PathVariable String name) {
-		return ResponseEntity.ok(this.service.findByName(name));
 	}
 
 }

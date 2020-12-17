@@ -29,7 +29,7 @@ public class Item {
 	private Long id;
 	
 	@NotNull
-	private String name;
+	private String itemName;
 	
 	@NotNull
 	private String category;
@@ -42,17 +42,17 @@ public class Item {
 	@ManyToOne
 	private Shop shop;
 
-	public Item(Long id, String name, String category, int quantity) {
+	public Item(Long id, String itemName, String category, int quantity) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.itemName = itemName;
 		this.category = category;
 		this.quantity = quantity;
 	}
 
-	public Item(String name, String category, int quantity) {
+	public Item(String itemName, String category, int quantity) {
 		super();
-		this.name = name;
+		this.itemName = itemName;
 		this.category = category;
 		this.quantity = quantity;
 	}

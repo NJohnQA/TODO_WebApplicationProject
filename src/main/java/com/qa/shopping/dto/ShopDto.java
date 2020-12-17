@@ -18,6 +18,6 @@ public class ShopDto {
 	private String category;
 
 	
-	private List<ItemDto> shop = new ArrayList<>();
+	private List<ItemDto> item = new ArrayList<>();
 
 }

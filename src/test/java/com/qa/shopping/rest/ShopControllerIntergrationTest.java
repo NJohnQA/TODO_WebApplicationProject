@@ -35,8 +35,8 @@ import com.qa.shopping.persistence.domain.Shop;
 @SpringBootTest
 @AutoConfigureMockMvc
 // sql runs in order schema followed by data file - JH dont make the mistake
-@Sql(scripts = { "classpath:item-schema.sql",
-		"classpath:item-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = { "classpath:schema.sql",
+		"classpath:shop-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles(profiles = "dev")
 public class ShopControllerIntergrationTest {
 
@@ -61,7 +61,6 @@ public class ShopControllerIntergrationTest {
 
 	// I also want to create a list of cars that i can use later
 	private final List<Shop> LISTOFSHOPS = List.of(TEST_SHOP_1, TEST_SHOP_2, TEST_SHOP_3, TEST_SHOP_4);
-	private List<Item> EMPTYITEMS = Collections.emptyList();
 
 
 	private final String URI = "/shop";
@@ -85,72 +84,67 @@ public class ShopControllerIntergrationTest {
 		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody);
 
 	}
-
-	@Test
-	void readOneTest() throws Exception {
-		
-		TEST_SHOP_1.setItem(EMPTYITEMS);
-
-		String expected = this.jsonifier.writeValueAsString(this.mapToDTO(TEST_SHOP_1));
-		
-		RequestBuilder request = get(URI + "/read/1").contentType(MediaType.APPLICATION_JSON);
-		ResultMatcher checkStatus = status().isOk();
-		
-		
-		ShopDto testSavedDTO = mapToDTO(TEST_SHOP_1);
-		String testSavedDtoAsJSON = this.jsonifier.writeValueAsString(testSavedDTO);
-
-		
-		
-		//Shop TEST_SHOP1 = new Shop(1L, "Console", "Argos");
-        //List<Item> item = List.of(new Item(1L, "PS4", "Console", 1));
-        //TEST_SHOP1.setItem(item);
-
-		
-		
-
-		ResultMatcher checkBody = content().json(testSavedDtoAsJSON);
 	
-	    this.mvc.perform(request).andExpect(checkStatus).andReturn();
-
-		//assertThat(expected).isEqualTo(checkBody);  //coverage error
-
-	}
-
 	@Test
 	void readAllTest() throws Exception {
 	
 		RequestBuilder request = get(URI + "/readall").contentType(MediaType.APPLICATION_JSON);
 		ResultMatcher checkStatus = status().isOk();
 		
-		
 		String testSavedDtoAsJSON = this.jsonifier.writeValueAsString(List.of(LISTOFSHOPS));
 		ResultMatcher checkBody = content().json(testSavedDtoAsJSON);
 		
-		this.mvc.perform(request).andExpect(checkStatus).andReturn();
 		
-		//this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody).andReturn();	
+		this.mvc.perform(request).andExpect(checkStatus);	
 
 	}
 
 	@Test
+	void readOneTest() throws Exception {
+		Long id = 1L;
+		
+		RequestBuilder request = get(URI + "/read/" + id).contentType(MediaType.APPLICATION_JSON);
+		ResultMatcher checkStatus = status().isOk();
+		
+		ShopDto testSavedDTO = mapToDTO(TEST_SHOP_1);
+		String testSavedDtoAsJSON = this.jsonifier.writeValueAsString(testSavedDTO);
+		
+		ResultMatcher checkBody = content().json(testSavedDtoAsJSON);
+	
+	    this.mvc.perform(request).andExpect(checkStatus);
+
+	
+
+	}
+
+
+
+	@Test
 	void updateTest() throws Exception {
-		Shop testDTO = new Shop(1L,"Stationary", "Amazon");
-		testDTO.setItem(EMPTYITEMS);
+		Long id = 1L;
 		
-		String testDTOAsJSON = this.jsonifier.writeValueAsString(this.mapToDTO(testDTO));
-		
-
-		RequestBuilder request = put(URI + "/update/1").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON);
-
+		Shop update = new Shop("Stationary", "Amazon");
+		String testDTOAsJSON = this.jsonifier.writeValueAsString(update);
+		RequestBuilder request = put(URI + "/update/"+id).contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON);
 		ResultMatcher checkStatus = status().isAccepted();
+		
+		ShopDto testSavedDTO = mapToDTO(new Shop("Stationary", "Amazon"));
+		testSavedDTO.setId(id);
+		String testSavedDTOAsJSON = this.jsonifier.writeValueAsString(testSavedDTO);
+		ResultMatcher checkBody = content().json(testSavedDTOAsJSON);
+		
+		this.mvc.perform(request).andExpect(checkStatus);
+		
+		
+
+		
 
 //		ShopDto testSavedDTO = mapToDTO(new Shop(5L, "Stationary", "Amazon"));
 //		String testSavedDTOAsJSON = this.jsonifier.writeValueAsString(testSavedDTO);
 //
 //		ResultMatcher checkBody = content().json(testSavedDTOAsJSON);
 		
-		this.mvc.perform(request).andExpect(checkStatus).andReturn();
+		//this.mvc.perform(request).andExpect(checkStatus).andReturn();
 
 		//this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody);
 
@@ -158,11 +152,12 @@ public class ShopControllerIntergrationTest {
 
 	@Test
 	void deleteTest() throws Exception {
+		Long id = 1L;
 
-		RequestBuilder request = delete(URI+"/3");
+		RequestBuilder request = delete(URI+"/delete/"+id).contentType(MediaType.APPLICATION_JSON);
 		ResultMatcher checkStatus = status().isNoContent();
 
-//		this.mvc.perform(request).andExpect(checkStatus);//error
+		this.mvc.perform(request).andExpect(checkStatus);//error
 
 	}
 

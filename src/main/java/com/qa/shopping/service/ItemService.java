@@ -65,7 +65,7 @@ public class ItemService {
 		// check if record exists
 		Item toUpdate = this.repo.findById(id).orElseThrow(ItemNotFoundException::new);
 		// set the record to update
-		toUpdate.setName(itemDto.getName());
+		toUpdate.setItemName(itemDto.getItemName());
 		// check update for any nulls
 		SpringBeanUtil.mergeNotNull(itemDto, toUpdate);
 		// retun the method from repo
@@ -82,8 +82,8 @@ public class ItemService {
 	}
 
 	// Find by name
-	public List<ItemDto> findByName(String name) {
-		return this.repo.findByName(name).stream().map(this::mapToDTO).collect(Collectors.toList());
+	public List<ItemDto> findByCategory(String category) {
+		return this.repo.findByCategory(category).stream().map(this::mapToDTO).collect(Collectors.toList());
 		// stream - returns a sequential stream considering collection as its source
 		// map - used to map each element to its corresponding result
 		// :: - for each e.g. Random random = new Random();

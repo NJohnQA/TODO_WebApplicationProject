@@ -1,10 +1,14 @@
 package com.qa.shopping.rest;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
@@ -27,7 +31,7 @@ import com.qa.shopping.persistence.domain.Item;
 @SpringBootTest
 @AutoConfigureMockMvc
 // sql runs in order schema followed by data file - JH dont make the mistake
-@Sql(scripts = { "classpath:item-schema.sql",
+@Sql(scripts = { "classpath:schema.sql",
 		"classpath:item-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles(profiles = "dev")
 public class ItemControllerIntergrationTest {
@@ -77,5 +81,75 @@ public class ItemControllerIntergrationTest {
 //			this.mvc.perform(post(URI + "/create").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON))
 //					.andExpect(status().isCreated()).andExpect(content().json(testSavedDTOAsJSON));
 		}
+		// read all
+		@Test
+		void readAllTest() throws Exception {
+			
+			RequestBuilder request = get(URI + "/readall").contentType(MediaType.APPLICATION_JSON);
+			ResultMatcher checkStatus = status().isOk();
+			
+			String testSavedDtoAsJSON = this.jsonifier.writeValueAsString(List.of(LISTOFITEMS));
+			ResultMatcher checkBody = content().json(testSavedDtoAsJSON);
+			
+			
+			this.mvc.perform(request).andExpect(checkStatus);	
+		}
+		
+		// read one
+		@Test
+		void readOneTest() throws Exception {
+			
+			Long id = 1L;
+			
+			RequestBuilder request = get(URI + "/read/" + id).contentType(MediaType.APPLICATION_JSON);
+			ResultMatcher checkStatus = status().isOk();
+			
+			ItemDto testReadOneDTO = mapToDTO(TEST_ITEM_1);
+			String testReadOneDTOAsJSON = this.jsonifier.writeValueAsString(testReadOneDTO);
+			
+			ResultMatcher checkBody = content().json(testReadOneDTOAsJSON);
+			this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody);
+			
+		}
+		
+		// (partial) update
+		@Test
+		void UpdateTest() throws Exception {
+			
+			Long id = 1L;
+			
+			Item update = new Item("PS", "Console", 1);
+			
+			ItemDto testDTO = mapToDTO(update);
+			String testDTOAsJSON = this.jsonifier.writeValueAsString(testDTO);
+
+			RequestBuilder request = put(URI + "/update/" + id).contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON);
+			ResultMatcher checkStatus = status().isAccepted();
+			
+			Item save = new Item("PS", "Console", 1);
+			
+			ItemDto testSavedDTO = mapToDTO(save);
+			testSavedDTO.setId(id);
+			String testSavedDTOAsJSON = this.jsonifier.writeValueAsString(testSavedDTO);
+			
+			ResultMatcher checkBody = content().json(testSavedDTOAsJSON);
+			this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody);
+			
+		}
+		
+		// delete
+		@Test
+		void deleteTest() throws Exception {
+			
+			Long id = 4L;
+			
+			RequestBuilder request = delete(URI + "/delete/" + id).contentType(MediaType.APPLICATION_JSON);
+			ResultMatcher checkStatus = status().isNoContent();
+			
+			this.mvc.perform(request).andExpect(checkStatus);
+			
+		}
+		
+		
 
 }

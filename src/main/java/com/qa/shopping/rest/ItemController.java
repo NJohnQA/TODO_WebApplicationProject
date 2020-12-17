@@ -3,6 +3,7 @@ package com.qa.shopping.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,6 +25,7 @@ import com.qa.shopping.service.ItemService;
 @RestController
 @CrossOrigin
 @RequestMapping("/item") // this is to further define the path
+@Profile({"dev","prod"})
 public class ItemController {
 	private ItemService service;
 
@@ -43,7 +45,7 @@ public class ItemController {
 	}
 
 	// read all method
-	@GetMapping("/read")
+	@GetMapping("/readall")
 	public ResponseEntity<List<ItemDto>> read() {
 		return ResponseEntity.ok(this.service.readAll());
 		// produce a ok - 200
@@ -57,8 +59,8 @@ public class ItemController {
 
 	// update
 	@PutMapping("/update/{id}")
-	public ResponseEntity<ItemDto> update(@PathVariable Long id, @RequestBody ItemDto ItemDto) {
-		return new ResponseEntity<>(this.service.update(ItemDto, id), HttpStatus.ACCEPTED);
+	public ResponseEntity<ItemDto> update(@PathVariable Long id, @RequestBody ItemDto itemDto) {
+		return new ResponseEntity<>(this.service.update(itemDto, id), HttpStatus.ACCEPTED);
 	}
 
 	// Delete one
@@ -70,8 +72,8 @@ public class ItemController {
 		// if the record isnt found!
 	}
 
-	@GetMapping("findByName/{itemname}")
-	public ResponseEntity<List<ItemDto>> findByName(@PathVariable String name) {
-		return ResponseEntity.ok(this.service.findByName(name));
+	@GetMapping("findByCategory/{category}")
+	public ResponseEntity<List<ItemDto>> findByCategory(@PathVariable String category) {
+		return ResponseEntity.ok(this.service.findByCategory(category));
 	}
 }

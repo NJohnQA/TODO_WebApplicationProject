@@ -22,6 +22,6 @@ public interface ItemRepo extends JpaRepository<Item, Long> {
 
 	// find all by name
 	// JPQL
-	@Query(value = "SELECT * FROM ITEM WHERE NAME =?1", nativeQuery = true)
-	List<Item> findByName(String name);
+	@Query(value = "SELECT * FROM ITEM WHERE CATEGORY =?1", nativeQuery = true)
+	List<Item> findByCategory(String category);
 }

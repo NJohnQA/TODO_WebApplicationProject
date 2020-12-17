@@ -105,12 +105,12 @@ public class ItemControllerUnitTest {
 
 	// Find by name
 	@Test
-	void findByName() throws Exception {
+	void findByCategory() throws Exception {
 		List<ItemDto> dtos = LISTOFITEMS.stream().map(this::maptoDto).collect(Collectors.toList());
-		when(this.service.findByName(TEST_ITEM_1.getName())).thenReturn(dtos);
-		assertThat(this.controller.findByName(TEST_ITEM_1.getName()))
+		when(this.service.findByCategory(TEST_ITEM_1.getItemName())).thenReturn(dtos);
+		assertThat(this.controller.findByCategory(TEST_ITEM_1.getItemName()))
 				.isEqualTo(new ResponseEntity<List<ItemDto>>(dtos, HttpStatus.OK));
-		verify(this.service, atLeastOnce()).findByName(TEST_ITEM_1.getName());
+		verify(this.service, atLeastOnce()).findByCategory(TEST_ITEM_1.getItemName());
 	}
 
 }
