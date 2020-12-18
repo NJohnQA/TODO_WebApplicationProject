@@ -78,9 +78,9 @@ public class ItemControllerIntergrationTest {
 
 			this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody);
 
-//			this.mvc.perform(post(URI + "/create").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON))
-//					.andExpect(status().isCreated()).andExpect(content().json(testSavedDTOAsJSON));
+
 		}
+		
 		// read all
 		@Test
 		void readAllTest() throws Exception {

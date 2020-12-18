@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <title>Read one Shop Record</title>
+  <title>Update an item</title>
 </head>
 
 <body>
@@ -20,8 +20,8 @@
       </button>
       <div class="collapse navbar-collapse" id="options">
         <ul class="navbar-nav">
-          <li class="nav-item ">
-            <a href="../html/index.html" class="nav-link">Home </a>
+          <li class="nav-item">
+            <a href="../html/index.html" class="nav-link">Home</a>
           </li>
           <li class="nav-item">
             <a href="../html/readAllShops.html" class="nav-link">Read All Shops</a>
@@ -29,11 +29,11 @@
           <li class="nav-item">
             <a href="../html/readAllitem.html" class="nav-link">Read All Items</a>
           </li>
-          <li class="nav-item active">
-            <a href="../html/ReadOneShop.html" class="nav-link">Read One Shop<span class="sr-only">(current)</span></a>
-          </li>
           <li class="nav-item">
-            <a href="../html/readOneItem.html" class="nav-link">Read One Item</a>
+            <a href="../html/ReadOneShop.html" class="nav-link">Read One Shop</a>
+          </li>
+          <li class="nav-item active">
+            <a href="../html/readOneItem.html" class="nav-link">Read One Item <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a href="../html/create.html" class="nav-link">Create an Item Record</a>
@@ -46,35 +46,35 @@
       </div>
     </nav>
     <br>
-    <h1>Read one record</h1>
+    <h1>Update an item</h1>
     <br>
-    <form method="post" class="viewRecord">
-      <!-- <form method="put" class="updateRecord"> -->
-        <div class="form-row">
-          <div class="col">
-            <label for="InputId">Shop ID:</label>
-            <input type="number" class="form-control" placeholder="ID" id="commentShopId" disabled>
-          </div>
-          <div class="col">
-            <label for="inputCategory">Category:</label>
-            <input type="text" class="form-control" placeholder="Category" id="commentCategory">
-          </div>
-          <div class="col">
-            <label for="inputItem">Shop name:</label>
-            <input type="text" class="form-control" placeholder="Item" id="commentShop">
-          </div>
+    <form method="put" class="updateItem">
+      <div class="form-row">
+        <div class="col">
+          <label for="InputId">Item ID:</label>
+          <input type="number" class="form-control" placeholder="ID" id="commentItemId" disabled>
         </div>
-        <br>
-        <button type="submit" class="btn btn-danger btn-block" value="submit">submit</button>
-        <button type="delete" class="btn btn-danger btn-block" value="delete">delete</button>
-        <a id="pbutton" class="btn btn-danger btn-block" href="../html/readAllShops.html" role="button">Go back</a>
-    
-      <!-- </form> -->
-    </form>
-    <table class="table table-striped table-dark"></table>
-  </div>
+        <div class="col">
+          <label for="inputCategory">Category:</label>
+          <input type="text" class="form-control" placeholder="Category" id="commentCategory">
+        </div>
+        <div class="col">
+          <label for="inputItem">Item:</label>
+          <input type="text" class="form-control" placeholder="Item" id="commentItem">
+        </div>
+        <div class="col">
+          <label for="inputQuantity">Quantity:</label>
+          <input type="number" class="form-control" placeholder="Quantity" id="commentQuantity" a>
+        </div>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-danger btn-block" value="submit">update</button>
+      <button type="delete" class="btn btn-danger btn-block" value="delete">delete</button>
+      <a id="pbutton" class="btn btn-danger btn-block" href="../html/readAllitem.html" role="button">Go back</a>
 
-  <script src="../js/readOneShop.js"></script>
+    </form>
+  </div>
+  <script src="../js/readOneItem.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>

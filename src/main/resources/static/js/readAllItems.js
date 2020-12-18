@@ -1,4 +1,4 @@
-fetch('http://localhost:9092/item/readall')
+fetch('http://localhost:8082/item/readall')
 .then(
   function(response) {
     if (response.status !== 200) {
@@ -47,7 +47,7 @@ function createTableBody(table,commentData){
           }
           let newCell = row.insertCell();
           let myViewButton = document.createElement("a");
-          let myButtonValue = document.createTextNode("View one/update")
+          let myButtonValue = document.createTextNode("update")
           myViewButton.className ="btn btn-warning";
           myViewButton.href="readOneItem.html?id="+commentRecord.id
           myViewButton.appendChild(myButtonValue);

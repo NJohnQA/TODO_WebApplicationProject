@@ -25,7 +25,7 @@ import com.qa.shopping.service.ItemService;
 @RestController
 @CrossOrigin
 @RequestMapping("/item") // this is to further define the path
-@Profile({"dev","prod"})
+@Profile({"dev"})
 public class ItemController {
 	private ItemService service;
 

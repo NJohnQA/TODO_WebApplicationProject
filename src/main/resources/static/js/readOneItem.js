@@ -9,7 +9,7 @@ for(let param of params ){
 }
 
 function getData(id){
-    fetch('http://localhost:9092/item/read/'+id)
+    fetch('http://localhost:8082/item/read/'+id)
       .then(
         function(response) {
           if (response.status !== 200) {
@@ -65,7 +65,7 @@ function getData(id){
 
 
   function sendData(data,id){
-    fetch("http://localhost:9092/item/update/"+id, {
+    fetch("http://localhost:8082/item/update/"+id, {
         method: 'put',
         headers: {
           "Content-type": "application/json; charset=UTF-8"
@@ -81,7 +81,7 @@ function getData(id){
     }
 
     function deleteByid(id){
-      fetch("http://localhost:9092/item/delete/"+id, {
+      fetch("http://localhost:8082/item/delete/"+id, {
           method: 'delete',
           headers: {
             "Content-type": "application/json; charset=UTF-8"

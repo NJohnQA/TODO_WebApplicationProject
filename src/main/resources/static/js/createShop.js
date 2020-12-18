@@ -21,7 +21,7 @@ sendData(data)
 
 
 function sendData(data){
-fetch("http://localhost:9092/shop/create", {
+fetch("http://localhost:8082/shop/create", {
     method: 'post',
     headers: {
       "Content-type": "application/json; charset=UTF-8"

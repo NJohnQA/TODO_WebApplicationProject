@@ -8,8 +8,9 @@ for(let param of params ){
     getData(id)
 }
 
+
 function getData(id){
-    fetch('http://localhost:9092/shop/read/'+id)
+    fetch('http://localhost:8082/shop/read/'+id)
       .then(
         function(response) {
           if (response.status !== 200) {
@@ -35,10 +36,10 @@ function getData(id){
 
 
     document
-  .querySelector("form.viewRecord")
+  .querySelector("form.updateRecord")
   .addEventListener("submit", function (stop) {
     stop.preventDefault();
-    let formElements = document.querySelector("form.viewRecord").elements;
+    let formElements = document.querySelector("form.updateRecord").elements;
     console.log(formElements)
     let id=formElements["commentShopId"].value;
     let cat=formElements["commentCategory"].value;
@@ -58,10 +59,10 @@ function getData(id){
     sendData(data,id)
     // postData(noteTitle,noteBody)
   });
-
+  
 
   function sendData(data,id){
-    fetch("http://localhost:9092/shop/update/"+id, {
+    fetch("http://localhost:8082/shop/update/"+id, {
         method: 'put',
         headers: {
           "Content-type": "application/json; charset=UTF-8"
@@ -77,7 +78,7 @@ function getData(id){
     }
 
     function deleteByid(id){
-      fetch("http://localhost:9092/shop/delete/"+id, {
+      fetch("http://localhost:8082/shop/delete/"+id, {
           method: 'delete',
           headers: {
             "Content-type": "application/json; charset=UTF-8"

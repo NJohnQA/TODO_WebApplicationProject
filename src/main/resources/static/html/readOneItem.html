@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  
+
   <title>Read one record</title>
 </head>
 
 <body>
   <div class="container">
-    <nav id="nav" class="navbar navbar-light bg-light">
+    <nav id="nav" class="navbar navbar-dark bg-primary">
       <a href="../html/index.html" class="navbar-brand">
         <img src="../img/icon.png" width="60" height="60" class="d-inline-block align-top" alt=""
           loading="lazy">Shopping ToDo</a>
@@ -20,35 +20,35 @@
       </button>
       <div class="collapse navbar-collapse" id="options">
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a href="../html/index.html" class="nav-link">Home <span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a href="../html/index.html" class="nav-link">Home</a>
           </li>
           <li class="nav-item">
             <a href="../html/readAllShops.html" class="nav-link">Read All Shops</a>
-        </li>
-        <li class="nav-item">
+          </li>
+          <li class="nav-item">
             <a href="../html/readAllitem.html" class="nav-link">Read All Items</a>
-        </li>
-        <li class="nav-item">
+          </li>
+          <li class="nav-item">
             <a href="../html/ReadOneShop.html" class="nav-link">Read One Shop</a>
-        </li>
-        <li class="nav-item">
-            <a href="../html/readOneItem.html" class="nav-link">Read One Item</a>
-        </li>
-        <li class="nav-item">
+          </li>
+          <li class="nav-item active">
+            <a href="../html/readOneItem.html" class="nav-link">Read One Item <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
             <a href="../html/create.html" class="nav-link">Create an Item Record</a>
-        </li>
-        <li class="nav-item">
-          <a href="../html/createShop.html" class="nav-link">Create a shop Record</a>
-      </li>
+          </li>
+          <li class="nav-item">
+            <a href="../html/createShop.html" class="nav-link">Create a Shop Record</a>
           </li>
         </ul>
+
       </div>
     </nav>
     <br>
     <h1>Read one record</h1>
     <br>
-    <form method="post" class="viewRecord">
+    <form method="put" class="viewRecord">
       <div class="form-row">
         <div class="col">
           <label for="InputId">Item ID:</label>
@@ -68,9 +68,10 @@
         </div>
       </div>
       <br>
-      <button type="submit" class="btn btn-danger btn-block" value="update">submit</button>
+      <!-- <a id="pbutton" class="btn btn-danger btn-block" href="../html/updateItem.html" role="button">Cick to update</a> -->
+      <button type="submit" class="btn btn-danger btn-block" value="submit">submit</button>
       <button type="delete" class="btn btn-danger btn-block" value="delete">delete</button>
-      <a id = "pbutton" class="btn btn-danger btn-block" href="../html/readAllitem.html" role="button">Go back</a>
+      <a id="pbutton" class="btn btn-danger btn-block" href="../html/readAllitem.html" role="button">Go back</a>
 
     </form>
   </div>
@@ -84,7 +85,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-  <!-- <script src="https://getbootstrap.com/docs/4.0/content/tables/" crossorigin="anonymous"></script> -->
 </body>
 
 </html>
