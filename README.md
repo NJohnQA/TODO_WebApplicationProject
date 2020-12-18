@@ -9,6 +9,9 @@ This is a TODO Web Application project which creates a full-stack web applicatio
 
 	>a front-end developed using the language from the Front-end Technologies such as JavaScript, HTML, CSS, Selenium.
 
+## Documentation
+You can view all the documentation such as ERD, UML, Risk assessment and others in the repo too.
+
 ## Getting Started
 
 You can retrieve the project by cloning this repository into you device a simple code:
