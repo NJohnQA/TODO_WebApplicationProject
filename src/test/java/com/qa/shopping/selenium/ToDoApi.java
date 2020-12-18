@@ -23,7 +23,7 @@ public class ToDoApi {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().setSize(new Dimension(1366, 768));
-        driver.get("http://127.0.0.1:5500/html/index.html");
+        driver.get("http://localhost:8082/");
 
     }
     
