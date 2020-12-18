@@ -2,14 +2,18 @@
 Coverage: 54.0%
 
 This is a TODO Web Application project which creates a full-stack web application following the Enterprise Architecture Model, using:
+
 	>an application back-end developed using the languages like SPRING, MAVEN, JUNIT and MOCKITO.
+
 	>a managed database hosted by locally/cloud
+
 	>a front-end developed using the language from the Front-end Technologies such as JavaScript, HTML, CSS, Selenium.
 
 ## Getting Started
 
 You can retrieve the project by cloning this repository into you device a simple code:
-	>git clone https://github.com/NJohnQA/TODO_WebApplicationProject.git
+	
+>git clone https://github.com/NJohnQA/TODO_WebApplicationProject.git
 
 ### Prerequisites
 To run the file you will need to install the latest version of Java & Maven at the link bellow.
